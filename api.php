@@ -38,9 +38,9 @@ switch($_SERVER['REQUEST_METHOD']) {
             echo Response::result(400,$response);
         } else {
             $provider = new Provider();
-            $provider->setName($params['name']);
-            $provider->setEmail($params['email']);
-            $provider->setCif($params['cif']);
+            $provider->setName(trim(strip_tags($params['name'])));
+            $provider->setEmail(trim(strip_tags($params['email'])));
+            $provider->setCif(trim(strip_tags($params['cif'])));
 
             $errors = $provider->validate();
             if(empty($errors)){
